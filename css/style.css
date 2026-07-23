@@ -57,7 +57,7 @@ h1{
 
 .eyebrow{
   font-family:var(--body);
-  font-size:0.72rem;
+  font-size:2rem;
   letter-spacing:0.28em;
   text-transform:uppercase;
   color:var(--gold);
@@ -429,7 +429,7 @@ footer{
   width:56px;
   height:56px;
   border-radius:50%;
-  background:#25D366;
+  background:#35cb08;
   color:#FFFFFF;
   display:flex;
   align-items:center;
@@ -439,8 +439,9 @@ footer{
 }
 
 .whatsapp-float svg, .whatsapp-float img{ 
-  width:30px; 
-  height:30px;
+  width:85%; 
+  height:85%;
+  border-radius:50%;
 }
 
 .whatsapp-float:hover{
