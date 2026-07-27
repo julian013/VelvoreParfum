@@ -20,17 +20,24 @@
       <nav class="nav container">
         <a href="#inicio" class="logoperfume"><b><b>Velvore <span>Perfum</span></b></a>
 
-        <div class="nav-carousel">
-          <ul class="nav-links">
-            <li><a href="#nosotros">Nosotros</a></li>
-            <li><a href="#ofertas">Ofertas</a></li>
-            <li><a href="#perfumes-arabes">Perfumes Árabes</a></li>
-            <li><a href="#perfumes-nichos">Perfumes Nichos</a></li>
-            <li><a href="#meotodos-de-pagos">Métodos de Pagos</a></li>
-            <li><a href="#envios">Envíos</a></li>
-            <li><a href="#testimonios">Testimonios</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-          </ul>
+        <div class="nav-carousel-wrap">
+          <button class="carousel-arrow prev nav-arrow" type="button" aria-label="Ver secciones anteriores">‹</button>
+
+            <div class="nav-carousel">
+              <ul class="nav-links">
+              <li><a href="#nosotros">Nosotros</a></li>
+              <!-- Estos 3 abren el catálogo en una pestaña nueva -->
+              <li><a href="catalogo-ofertas.html" target="_blank" rel="noopener">Ofertas</a></li>
+              <li><a href="catalogo-perfumes-arabes.html" target="_blank" rel="noopener">Perfumes Árabes</a></li>
+              <li><a href="catalogo-perfumes-nichos.html" target="_blank" rel="noopener">Perfumes Nichos</a></li>
+              <li><a href="#metodos-de-pagos">Métodos de Pagos</a></li>
+              <li><a href="#envios">Envíos</a></li>
+              <li><a href="#testimonios">Testimonios</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            </div>
+            
+          <button class="carousel-arrow next nav-arrow" type="button" aria-label="Ver más secciones">›</button>
         </div>
       </nav>
     </header>
@@ -48,7 +55,7 @@
         <p><b><b>No vendemos perfumes.<br><b><em>Vendemos la versión de vos que nadie olvida.</em></b></p>
         <div class="hero-actions">
           <a href="#coleccion" class="btn solid">Ver colección</a>
-          <a href="#nosotros" class="btn">Ofertas</a>
+          <a href="catalogo-ofertas.html" target="_blank" rel="noopener" class="btn">Ofertas</a>
         </div>
       </div>
     </section>
@@ -74,59 +81,70 @@
       </div>
     </section>
 
-    <!-- ============ COLECCIÓN (3 imágenes) ============ -->
+    <!-- ============ COLECCIÓN (carrusel) ============ -->
     <section id="coleccion">
       <div class="container" style="position:relative;">
         <div class="thread"></div>
         <div class="section-head reveal">
           <span class="eyebrow">Colección actual</span>
         </div>
-        <div class="collection-grid reveal">
-          <article class="product-card">
-            <div class="img-frame" data-label="coleccion-1.jpg">
-              <img class="ph" src="images/perfumeArabe2.png" alt="Perfume Velvore Noire, frasco negro y dorado">
-            </div>
-            <!--
-            <h3>Velvore Noire</h3>
-            <span class="price">$ ---- </span>
-            <p class="desc">Notas de ámbar, cuero y vainilla. Intensa y envolvente.</p>-->
-          </article>
-          <article class="product-card">
-            <div class="img-frame" data-label="coleccion-2.jpg">
-              <img class="ph" src="images/perfumeArabe3.jpg" alt="Perfume Velvore Ivoire, frasco claro">
-            </div>
-            <!--
-            <h3>Velvore Ivoire</h3>
-            <span class="price">$ ---- </span>
-            <p class="desc">Flor de azahar, almizcle blanco y un toque cítrico.</p>-->
-          </article>
-          <article class="product-card">
-            <div class="img-frame" data-label="coleccion-3.jpg">
-              <img class="ph" src="images/perfumeArabe4.png" alt="Perfume Velvore Rouge, frasco rojo intenso">
-            </div>
-          </article>
+
+        <div class="carousel-wrap reveal">
+          <button class="carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="collection-grid carousel-track">
+            <article class="product-card">
+              <div class="img-frame" data-label="coleccion-1.jpg">
+                <img class="ph" src="images/perfumeArabe2.png" alt="Perfume Velvore Noire, frasco negro y dorado">
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="img-frame" data-label="coleccion-2.jpg">
+                <img class="ph" src="images/perfumeArabe3.jpg" alt="Perfume Velvore Ivoire, frasco claro">
+              </div>
+            </article>
+            <article class="product-card">
+              <div class="img-frame" data-label="coleccion-3.jpg">
+                <img class="ph" src="images/perfumeArabe4.png" alt="Perfume Velvore Rouge, frasco rojo intenso">
+              </div>
+            </article>
+          </div>
+
+          <button class="carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
         </div>
       </div>
     </section>
 
-    <!-- ============ EL ARTE DE LA FRAGANCIA (galería de 3) ============ -->
+    <!-- ============ OFERTAS (las imágenes redirigen al catálogo) ============ -->
     <section id="ofertas">
       <div class="container" style="position:relative;">
         <div class="thread"></div>
         <div class="section-head reveal">
           <span class="eyebrow">OFERTAS</span>
-          <h2></h2>
         </div>
-        <div class="craft-grid reveal">
-          <div class="img-frame" data-label="proceso-esencias.jpg">
-            <img class="ph" src="" alt="Selección de esencias naturales para perfumería">
+
+        <div class="carousel-wrap reveal">
+          <button class="carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="collection-grid carousel-track">
+            <article class="product-card">
+              <!-- Cada imagen lleva al catálogo completo de ofertas en una pestaña nueva -->
+              <a href="catalogo-ofertas.html" target="_blank" rel="noopener" class="img-frame" data-label="proceso-esencias.jpg">
+                <img class="ph" src="" alt="Selección de esencias naturales para perfumería">
+              </a>
+            </article>
+            <article class="product-card">
+              <a href="catalogo-ofertas.html" target="_blank" rel="noopener" class="img-frame" data-label="proceso-mezcla.jpg">
+                <img class="ph" src="" alt="Mezcla artesanal de fragancias en el atelier">
+              </a>
+            </article>
+            <article class="product-card">
+              <a href="catalogo-ofertas.html" target="_blank" rel="noopener" class="img-frame" data-label="proceso-envasado.jpg">
+                <img class="ph" src="" alt="Envasado final de los perfumes Velvore">
+              </a>
+            </article>
           </div>
-          <div class="img-frame" data-label="proceso-mezcla.jpg">
-            <img class="ph" src="" alt="Mezcla artesanal de fragancias en el atelier">
-          </div>
-          <div class="img-frame" data-label="proceso-envasado.jpg">
-            <img class="ph" src="" alt="Envasado final de los perfumes Velvore">
-          </div>
+          <button class="carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
         </div>
       </div>
     </section>
@@ -138,23 +156,25 @@
         <div class="section-head reveal">
           <span class="eyebrow">MÉTODOS DE PAGOS</span>
           <h2>Aceptación de diferentes modos de pagos o tranferencias</h2>
-         (agregar imagenes de los metodos de pagos, bna, naranja, mercado pago, etc)  
+          <p>(agregar imagenes de los metodos de pagos, bna, naranja, mercado pago, etc)</p>
+        </div>
       </div>
     </section>
 
-        <!-- ============ METODOS DE PAGOS ============ -->
-    <section id="metodos-de-pagos">
+    <!-- ============ ENVÍOS ============ -->
+    <section id="envios">
       <div class="container" style="position:relative;">
         <div class="thread"></div>
         <div class="section-head reveal">
           <span class="eyebrow">ENVÍOS</span>
           <p>Agregar informacion de distribucion de producto y demas
             (AGREGAR LOGO DE ENVÍOS, CORREO ARGENTINO, OCA, etc)
-          </p>  
+          </p>
+        </div>
       </div>
     </section>
 
-    <!-- ============ TESTIMONIOS ============ -->
+    <!-- ============ TESTIMONIOS (carrusel) ============ -->
     <section id="testimonios">
       <div class="container" style="position:relative;">
         <div class="thread"></div>
@@ -162,19 +182,26 @@
           <span class="eyebrow">Testimonios</span>
           <h2>Lo que dicen quienes ya nos eligieron</h2>
         </div>
-        <div class="testimonial-grid reveal">
-          <div class="testimonial">
-            <p>“Desde que uso Velvore Perfum, siempre me preguntan qué perfume tengo puesto.”</p>
-            <span class="who">— Camila R.</span>
+
+        <div class="carousel-wrap reveal">
+          <button class="carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="testimonial-grid carousel-track">
+            <div class="testimonial">
+              <p>“Desde que uso Velvore Perfum, siempre me preguntan qué perfume tengo puesto.”</p>
+              <span class="who">— Camila R.</span>
+            </div>
+            <div class="testimonial">
+              <p>“Una fragancia elegante que dura todo el día sin ser invasiva.”</p>
+              <span class="who">— Martín D.</span>
+            </div>
+            <div class="testimonial">
+              <p>“La atención hacen que se sienta un producto premium de verdad.”</p>
+              <span class="who">— Sofía A.</span>
+            </div>
           </div>
-          <div class="testimonial">
-            <p>“Una fragancia elegante que dura todo el día sin ser invasiva.”</p>
-            <span class="who">— Martín D.</span>
-          </div>
-          <div class="testimonial">
-            <p>“La atención hacen que se sienta un producto premium de verdad.”</p>
-            <span class="who">— Sofía A.</span>
-          </div>
+
+          <button class="carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
         </div>
       </div>
     </section>
@@ -265,13 +292,13 @@
     <script src="js/script.js" defer></script>
 
     <!-- Botón flotante de WhatsApp -->
-  <a
-    href="https://wa.me/5493585103101?text=Hola!%Quiero%más%información%sobre%su%catálogo%por%favor..." class="whatsapp-float"
-    target="_blank"
-    rel="noopener"
-    aria-label="Chatear por WhatsApp">
-  
-    <img src="images/icono-whatsapp.png" alt="Icono de WhatsApp">
-  </a>
+    <a
+      href="https://wa.me/5493585103101?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20su%20cat%C3%A1logo%20por%20favor..."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chatear por WhatsApp">
+      <img src="images/icono-whatsapp.png" alt="Icono de WhatsApp">
+    </a>
   </body>
 </html>
