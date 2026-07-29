@@ -1,0 +1,172 @@
+/* ============ style-productos.css ============
+   Se carga DESPUÉS de css/style.css en las páginas de catálogo
+   (catalogo-ofertas.html, catalogo-perfumes-arabes.html,
+   catalogo-perfumes-nichos.html). Usa las mismas variables de color
+   y tipografía que ya están definidas en :root dentro de style.css
+   (--gold, --bg, --cream, etc.), así que si cambiás la paleta ahí,
+   acá se actualiza sola. Este archivo solo agrega lo propio de estas
+   páginas: filas de productos en carrusel, tarjetas más "vivas" y
+   el encabezado del catálogo. */
+
+/* ---- Encabezado del catálogo ---- */
+.catalog-header{
+  background:radial-gradient(60% 80% at 50% 0%, rgba(184,134,11,0.16), transparent 70%);
+}
+.catalog-header h1{
+  position:relative;
+  display:inline-block;
+  padding-bottom:0.5rem;
+}
+.catalog-header h1::after{
+  content:'';
+  position:absolute;
+  left:0; bottom:0;
+  width:64px; height:2px;
+  background:var(--gold);
+}
+
+.catalog-header .catalog-back{
+  display:inline-block;
+  font-size:0.9rem;
+  color:var(--gold-soft);
+  transition:color .3s ease;
+  position:fixed;
+  right:3rem;
+  top:10rem;
+}
+
+/* ---- Filas de productos ---- */
+.product-row{
+  padding:3.5rem 0;
+  border-bottom:1px solid var(--line);
+}
+.product-row:last-of-type{ border-bottom:none; }
+
+.product-row-head{
+  display:flex;
+  align-items:baseline;
+  justify-content:space-between;
+  flex-wrap:wrap;
+  gap:0.6rem 1rem;
+  margin-bottom:2rem;
+}
+.product-row-head h2{
+  font-size:clamp(1.5rem, 3.5vw, 2.1rem);
+}
+.product-row-head .row-note{
+  font-size:0.76rem;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  color:rgba(244,234,224,0.55);
+  white-space:nowrap;
+}
+
+/* ---- Carrusel de productos (una fila) ----
+   HTML esperado:
+   <div class="product-carousel-wrap">
+     <button class="product-carousel-arrow prev">‹</button>
+     <div class="product-carousel-track">
+       <article class="product-card">...</article>
+       ...
+     </div>
+     <button class="product-carousel-arrow next">›</button>
+   </div>
+*/
+.product-carousel-wrap{ position:relative; }
+
+.product-carousel-track{
+  display:flex;
+  gap:1.6rem;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  touch-action:pan-x;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding:0.3rem 0.2rem 0.6rem;
+  cursor:grab;
+  /* difumina los bordes para sugerir que se puede seguir deslizando */
+  -webkit-mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+  mask-image:linear-gradient(to right, transparent 0, #000 24px, #000 calc(100% - 24px), transparent 100%);
+}
+.product-carousel-track.dragging{ cursor:grabbing; scroll-snap-type:none; }
+.product-carousel-track::-webkit-scrollbar{ display:none; }
+
+.product-carousel-track > .product-card{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+  width:74%;
+}
+@media(min-width:560px){
+  .product-carousel-track > .product-card{ width:44%; }
+}
+@media(min-width:800px){
+  .product-carousel-track > .product-card{ width:29%; }
+}
+@media(min-width:1100px){
+  .product-carousel-track > .product-card{ width:22%; }
+}
+
+/* ---- Tarjeta de producto: un poco más viva que en el index ---- */
+.product-card{ position:relative; }
+
+/* El link que envuelve imagen + título de cada producto (lleva a vista-producto.html) */
+.product-link{
+  display:block;
+  color:inherit;
+  text-decoration:none;
+}
+.product-link h3{ transition:color .3s ease; }
+.product-card:hover h3{ color:var(--gold-soft); }
+
+.product-card .img-frame{ transition:transform .35s ease; }
+.product-card:hover .img-frame{ transform:translateY(-4px); }
+.product-card .img-frame img.ph{ transition:transform .5s ease; }
+.product-card:hover .img-frame img.ph{ transform:scale(1.05); }
+
+/* Etiqueta tipo "OFERTA" / "NUEVO" / "EXCLUSIVO" sobre la imagen.
+   Cambiá el texto adentro del <span class="badge"> en el HTML según el producto. */
+.product-card .badge{
+  position:absolute;
+  top:10px;
+  left:10px;
+  z-index:2;
+  background:var(--gold);
+  color:#170D14;
+  font-size:0.66rem;
+  font-weight:600;
+  letter-spacing:0.08em;
+  text-transform:uppercase;
+  padding:0.32em 0.75em;
+  border-radius:999px;
+}
+
+/* ---- Flechas del carrusel de productos ---- */
+.product-carousel-arrow{
+  display:none;
+  position:absolute;
+  top:38%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,0.6);
+  color:var(--gold-soft);
+  font-size:1.5rem;
+  line-height:1;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:5;
+  transition:background .3s ease, border-color .3s ease, color .3s ease;
+}
+.product-carousel-arrow:hover{ background:var(--gold); color:#170D14; border-color:var(--gold); }
+.product-carousel-arrow.prev{ left:-8px; }
+.product-carousel-arrow.next{ right:-8px; }
+
+/* En mobile no hacen falta (ahí se desliza con el dedo); en desktop sí */
+@media(min-width:800px){
+  .product-carousel-arrow{ display:flex; }
+  .product-carousel-arrow.prev{ left:-22px; }
+  .product-carousel-arrow.next{ right:-22px; }
+}

@@ -1,11 +1,11 @@
 /* ============ TOKENS ============ */
   :root{
     --bg:            #000000;
-    --bg-alt:        #5c165c;
-    --bg-card:       #c99515;
+    --bg-alt:        #110211;
+    --bg-card:       #14ac1e;
     --gold:          #b8860b;
     --gold-soft:     #E7CD93;
-    --cream:         #F4EAE0;
+    --cream:         #efff11;
     --ivory:         #FBF7F1;
     --rose:          #965566;
     --line:          rgba(248, 174, 38, 0.25);
@@ -126,6 +126,9 @@ h1{
   border:1px solid var(--line);
   pointer-events:none;
 }
+/* Cuando el .img-frame es un <a> (enlace al catálogo), que se note clickeable */
+a.img-frame{ cursor:pointer; transition:opacity .3s ease; }
+a.img-frame:hover{ opacity:0.85; }
 
 /* ============ SIGNATURE: hilo dorado ============ */
 .thread{
@@ -169,14 +172,28 @@ header{
 }
 .logo span, .logoperfume span{ color:var(--gold); font-style:normal; }
 
-/* ---- Carrusel de navegación (debajo del título) ---- */
+/* ---- Carrusel de navegación (SOLO en mobile: en pc la lista entra entera) ---- */
+.nav-carousel-wrap{
+  position:relative;
+  width:100%;
+}
 .nav-carousel{
   position:relative;
   width:100%;
-  /* difumina los bordes para sugerir que la lista se puede deslizar */
+  /* difumina los bordes para sugerir que la lista se puede deslizar (solo mobile) */
   -webkit-mask-image:linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
   mask-image:linear-gradient(to right, transparent 0, #000 40px, #000 calc(100% - 40px), transparent 100%);
 }
+
+/* Flechas del header: solo existen para mobile, en pc no hacen falta */
+.nav-arrow{
+  width:32px;
+  height:32px;
+  font-size:1.2rem;
+  background:rgba(0,0,0,0.6);
+}
+.nav-arrow.prev{ left:0; }
+.nav-arrow.next{ right:0; }
 
 .nav-links{
   display:flex;
@@ -187,6 +204,7 @@ header{
   list-style:none;
   overflow-x:auto;
   scroll-snap-type:x proximity;
+  touch-action:pan-x;
   -webkit-overflow-scrolling:touch;
   scrollbar-width:none;
   padding:0.35rem 2.5rem 0.6rem;
@@ -211,14 +229,35 @@ header{
 }
 .nav-links a:hover::after{ width:100%; }
 
-/* El menú hamburguesa ya no se usa: la lista es carrusel en todos los tamaños */
+/* En pc la lista completa ya entra en pantalla: se desactiva el modo
+   "carrusel" (sin scroll, sin difuminado en los bordes, sin flechas)
+   y se muestra como una lista normal centrada. */
+@media(min-width:800px){
+  .nav-arrow{ display:none !important; }
+  .nav-carousel{
+    -webkit-mask-image:none;
+    mask-image:none;
+  }
+  .nav-links{
+    overflow-x:visible;
+    flex-wrap:wrap;
+    justify-content:center;
+    scroll-snap-type:none;
+    cursor:default;
+    padding:0.35rem 0 0.6rem;
+  }
+}
+
+/* El menú hamburguesa ya no se usa: la lista es carrusel solo en mobile */
 .menu-toggle{ display:none; }
 .mobile-menu{ display:none !important; }
 
 /* ============ HERO ============ */
 .hero{
   position:relative;
-  min-height:100svh;
+  min-height:100vh;      /* fallback para navegadores viejos */
+  min-height:100svh;     /* altura real de pantalla en mobile (sin la barra del navegador) */
+  overflow:hidden;       /* evita que la imagen "se escape" del recuadro en mobile */
   display:flex;
   align-items:center;
   padding-top:6rem;
@@ -228,7 +267,15 @@ header{
   position:absolute; inset:0;
   z-index:-1;
 }
-.hero-bg img.ph{ width:100%; height:100%; object-fit:cover; opacity:0.55; }
+.hero-bg img.ph{
+  width:100%;
+  height:100%;
+  min-width:100%;
+  min-height:100%;
+  object-fit:cover;
+  object-position:center 30%; /* ajustá el "30%" si querés mostrar más arriba/abajo de la foto */
+  opacity:0.55;
+}
 .hero-bg::before{
   content:'';
   position:absolute; inset:0;
@@ -327,11 +374,79 @@ section{
 .testimonial p{ font-family:var(--display); font-style:italic; font-size:1.15rem; color:var(--cream); margin-bottom:1.2rem; }
 .testimonial .who{ font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); }
 
+/* ============ CARRUSEL (Colección y Testimonios) ============
+   Se activa agregando la clase "carousel-track" a .collection-grid
+   o .testimonial-grid, envuelto en un .carousel-wrap con flechas. */
+.carousel-wrap{
+  position:relative;
+}
+
+.carousel-track{
+  display:flex;
+  gap:1.8rem;
+  overflow-x:auto;
+  scroll-snap-type:x proximity;
+  touch-action:pan-x;
+  -webkit-overflow-scrolling:touch;
+  scrollbar-width:none;
+  padding-bottom:0.4rem;
+  cursor:grab;
+}
+.carousel-track.dragging{ cursor:grabbing; scroll-snap-type:none; }
+.carousel-track::-webkit-scrollbar{ display:none; }
+.carousel-track > *{
+  flex:0 0 auto;
+  scroll-snap-align:start;
+}
+
+/* Ancho de cada tarjeta dentro del carrusel, por sección */
+.collection-grid.carousel-track > .product-card{ width:82%; }
+.testimonial-grid.carousel-track > .testimonial{ width:85%; }
+
+@media(min-width:640px){
+  .collection-grid.carousel-track > .product-card{ width:46%; }
+  .testimonial-grid.carousel-track > .testimonial{ width:48%; }
+}
+@media(min-width:1000px){
+  .collection-grid.carousel-track > .product-card{ width:31.5%; }
+  .testimonial-grid.carousel-track > .testimonial{ width:31.5%; }
+}
+
+/* Flechas: ocultas en mobile (ahí se desliza con el dedo), visibles en desktop */
+.carousel-arrow{
+  display:none;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  background:rgba(0,0,0,0.55);
+  color:var(--gold-soft);
+  font-size:1.5rem;
+  line-height:1;
+  align-items:center;
+  justify-content:center;
+  cursor:pointer;
+  z-index:5;
+  transition:background .3s ease, border-color .3s ease, color .3s ease;
+}
+.carousel-arrow:hover{ background:var(--gold); color:#170D14; border-color:var(--gold); }
+.carousel-arrow.prev{ left:-8px; }
+.carousel-arrow.next{ right:-8px; }
+
+@media(min-width:800px){
+  .carousel-arrow{ display:flex; }
+  .carousel-arrow.prev{ left:-22px; }
+  .carousel-arrow.next{ right:-22px; }
+}
+
 /* ---- Contacto ---- */
 .contact-grid{
   display:grid;
   grid-template-columns:1fr;
-  gap:3rem;
+  gap:5rem;
 }
 @media(min-width:800px){
   .contact-grid{ grid-template-columns:1fr 1fr; }
@@ -342,11 +457,11 @@ input, textarea{
   width:100%;
   background:var(--bg-card);
   border:1px solid var(--line);
-  color:var(--cream);
+  color:#000;
   font-family:var(--body);
-  font-size:0.95rem;
+  font-size:0.97rem;
   padding:0.8em 1em;
-  border-radius:2px;
+  border-radius:4px;
 }
 input:focus, textarea:focus{ border-color:var(--gold); }
 textarea{ resize:vertical; min-height:120px; }
@@ -455,4 +570,40 @@ footer{
     bottom:1rem; right:1rem;
   }
   .whatsapp-float svg{ width:26px; height:26px; }
+}
+
+/* ============ PÁGINAS DE CATÁLOGO ============ */
+.catalog-header{
+  position:relative;
+  padding:7.5rem 0 3rem;
+  border-bottom:1px solid var(--line);
+}
+.catalog-back{
+  display:inline-block;
+  margin-bottom:1.2rem;
+  font-size:0.78rem;
+  letter-spacing:0.1em;
+  text-transform:uppercase;
+  color:var(--gold-soft);
+  border-bottom:1px solid var(--line);
+  padding-bottom:2px;
+}
+.catalog-back:hover{ border-color:var(--gold); }
+.catalog-header h1{
+  font-size:clamp(2rem, 5vw, 3rem);
+  margin-bottom:0.6rem;
+}
+.catalog-header p{ color:rgba(244,234,224,0.7); max-width:52ch; }
+
+.catalog-grid{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:2.5rem;
+  padding:4rem 0;
+}
+@media(min-width:640px){
+  .catalog-grid{ grid-template-columns:repeat(2,1fr); gap:2rem; }
+}
+@media(min-width:1000px){
+  .catalog-grid{ grid-template-columns:repeat(3,1fr); }
 }

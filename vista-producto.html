@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title id="pageTitle">Productos</title>
+        <link rel="icon" href="images/favicon.jpeg" type="image/x-icon">
+        <meta name="description" content="Ficha de producto de Velvore Perfum.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style-productos.css">
+        <link rel="stylesheet" href="css/style-producto.css">
+    </head>
+    <body>
+
+    <!-- ============ HEADER (igual que el resto del sitio) ============ -->
+    <header>
+      <nav class="nav container">
+        <a href="index.html#inicio" class="logoperfume"><b><b>Velvore <span>Perfum</span></b></a>
+
+        <div class="nav-carousel-wrap">
+          <button class="carousel-arrow prev nav-arrow" type="button" aria-label="Ver secciones anteriores">‹</button>
+
+            <div class="nav-carousel">
+              <ul class="nav-links">
+              <li><a href="index.html#nosotros">Nosotros</a></li>
+              <li><a href="catalogo-ofertas.html" target="_self" rel="noopener">Ofertas</a></li>
+              <li><a href="catalogo-perfumes-arabes.html" target="_self" rel="noopener">Perfumes Árabes</a></li>
+              <li><a href="catalogo-perfumes-nichos.html" target="_self" rel="noopener">Perfumes Nichos</a></li>
+              <li><a href="index.html#metodos-de-pagos">Métodos de Pagos</a></li>
+              <li><a href="index.html#envios">Envíos</a></li>
+              <li><a href="index.html#testimonios">Testimonios</a></li>
+              <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            </div>
+
+          <button class="carousel-arrow next nav-arrow" type="button" aria-label="Ver más secciones">›</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ============ MIGA DE PAN / VOLVER ============ -->
+    <section class="pv-breadcrumb-section">
+      <div class="container">
+        <a href="index.html" id="pv-back-link" class="catalog-back">← Volver al catálogo</a>
+      </div>
+    </section>
+
+    <!-- ============ FICHA DEL PRODUCTO ============ -->
+    <section class="pv-main">
+      <div class="container pv-grid">
+
+        <!-- ---- Galería: imagen principal + miniaturas + video ---- -->
+        <div class="pv-gallery">
+          <div class="pv-main-image img-frame" id="pv-main-image" data-label="imagen-producto.jpg">
+            <img class="ph" id="pv-main-img-tag" src="" alt="Imagen principal del producto">
+          </div>
+
+          <div class="pv-thumbs" id="pv-thumbs">
+            <!-- Las miniaturas se generan solas con JS a partir de los datos del producto -->
+          </div>
+
+          <!-- Video del producto (opcional). Si el producto no tiene video, este bloque se oculta solo. -->
+          <div class="pv-video-wrap" id="pv-video-wrap" hidden>
+            <h3>Video del producto</h3>
+            <div class="pv-video-frame" id="pv-video-frame">
+              <!-- Acá se inserta un <iframe> de YouTube/Vimeo por JS, o reemplazalo
+                   a mano por un <video controls src="images/tu-video.mp4"></video> -->
+            </div>
+          </div>
+        </div>
+
+        <!-- ---- Caja de compra ---- -->
+        <div class="pv-buybox">
+          <span class="badge pv-badge" id="pv-badge">Oferta</span>
+          <h1 id="pv-title">Nombre del perfume</h1>
+          <div class="pv-price-row">
+            <span class="pv-price" id="pv-price">$ ----</span>
+            <span class="pv-price-old" id="pv-price-old"></span>
+          </div>
+          <p class="pv-short-desc" id="pv-short-desc">
+            Descripción breve de la fragancia y sus notas principales.
+          </p>
+
+          <div class="pv-qty-row">
+            <label for="pv-qty">Cantidad</label>
+            <div class="pv-qty-stepper">
+              <button type="button" id="pv-qty-minus" aria-label="Restar una unidad">−</button>
+              <input type="number" id="pv-qty" value="1" min="1" inputmode="numeric">
+              <button type="button" id="pv-qty-plus" aria-label="Sumar una unidad">+</button>
+            </div>
+          </div>
+
+          <div class="pv-actions">
+            <button type="button" class="btn solid" id="pv-buy-now">Comprar ahora</button>
+            <button type="button" class="btn" id="pv-add-cart">Agregar al carrito</button>
+          </div>
+
+          <div class="pv-info-box">
+            <p><strong>Envíos:</strong> a todo el país. Coordinamos por WhatsApp tiempos y costos.</p>
+            <p><strong>Métodos de pago:</strong> efectivo, transferencia y tarjeta (según disponibilidad).</p>
+            <p><strong>Consultas:</strong> escribinos y te respondemos a la brevedad.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DESCRIPCIÓN Y DETALLES ============ -->
+    <section class="pv-details">
+      <div class="container pv-details-grid">
+        <div class="pv-details-block reveal">
+          <h2>Descripción</h2>
+          <p id="pv-full-desc">
+            Acá va la descripción completa del producto: de dónde viene la inspiración de la
+            fragancia, para qué ocasiones es ideal, cómo se comporta en piel, duración
+            aproximada y cualquier otro detalle que ayude a decidir la compra.
+          </p>
+        </div>
+
+        <div class="pv-details-block reveal">
+          <h2>Notas olfativas</h2>
+          <ul class="pv-notes">
+            <li><span class="pv-notes-label">Salida</span><span id="pv-notes-top">Bergamota, mandarina</span></li>
+            <li><span class="pv-notes-label">Corazón</span><span id="pv-notes-heart">Jazmín, rosa</span></li>
+            <li><span class="pv-notes-label">Fondo</span><span id="pv-notes-base">Ámbar, madera de sándalo</span></li>
+          </ul>
+        </div>
+
+        <div class="pv-details-block reveal">
+          <h2>Envíos y cambios</h2>
+          <p>
+            Hacemos envíos a todo el país. Si el producto llega dañado o no es lo que
+            esperabas, contactanos dentro de las 48hs de recibido para coordinar el cambio.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TAMBIÉN TE PUEDE INTERESAR ============ -->
+    <section class="product-row">
+      <div class="container">
+        <div class="product-row-head reveal">
+          <h2>También te puede interesar</h2>
+          <span class="row-note">Deslizá para ver más</span>
+        </div>
+
+        <div class="product-carousel-wrap reveal">
+          <button class="product-carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="product-carousel-track">
+            <!-- Sugerencias de ejemplo: cambiá el "id" del link por el producto que quieras destacar -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=arabe-1&nombre=Nombre+del+perfume&badge=M%C3%A1s+vendido">
+                <div class="img-frame" data-label="sugerido-1.jpg">
+                  <img class="ph" src="" alt="Producto sugerido 1">
+                  <span class="badge">Más vendido</span>
+                </div>
+                <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+            </article>
+
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=nicho-1&nombre=Nombre+del+perfume&badge=Exclusivo">
+                <div class="img-frame" data-label="sugerido-2.jpg">
+                  <img class="ph" src="" alt="Producto sugerido 2">
+                  <span class="badge">Exclusivo</span>
+                </div>
+                <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+            </article>
+
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-2&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="sugerido-3.jpg">
+                  <img class="ph" src="" alt="Producto sugerido 3">
+                  <span class="badge">Oferta</span>
+                </div>
+                <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+            </article>
+
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=arabe-2&nombre=Nombre+del+perfume&badge=Nuevo">
+                <div class="img-frame" data-label="sugerido-4.jpg">
+                  <img class="ph" src="" alt="Producto sugerido 4">
+                  <span class="badge">Nuevo</span>
+                </div>
+                <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+            </article>
+          </div>
+
+          <button class="product-carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER + MAPA (igual que el resto del sitio) ============ -->
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html#inicio" class="logo">Velvore <span>Perfum</span></a>
+            <p>Fragancias de autor, elaboradas en pequeños lotes en Río Cuarto, Córdoba.</p>
+            <div class="footer-social">
+              <a href="#" target="_blank" rel="noopener">Instagram</a>
+              <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a href="#" target="_blank" rel="noopener">Facebook</a>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-64.3600%2C-33.1400%2C-64.3200%2C-33.1150&layer=mapnik&marker=-33.1275%2C-64.3400"
+              title="Ubicación de Velvore Perfum en el mapa"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-label">
+              <strong>Velvore Perfum</strong> — Río Cuarto, Córdoba, Argentina<br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Velvore Perfum. Todos los derechos reservados.</span>
+        <span>Sitio hecho con dedicación, como cada frasco.</span>
+      </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/scriptProductos.js" defer></script>
+    <script src="js/script-producto.js" defer></script>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a
+      href="https://wa.me/5493585103101?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20este%20producto%20por%20favor..."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chatear por WhatsApp">
+      <img src="images/icono-whatsapp.png" alt="Icono de WhatsApp">
+    </a>
+    </body>
+</html>

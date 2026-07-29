@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Ofertas</title>
+        <link rel="icon" href="images/favicon.jpeg" type="image/x-icon">
+        <meta name="description" content="Catálogo de ofertas de Velvore Perfum.">
+
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/style-productos.css">
+    </head>
+    <body>
+
+    <!-- ============ HEADER (igual que index.html, con los links de sección
+         apuntando de vuelta a index.html ya que estamos en otra página) ============ -->
+    <header>
+      <nav class="nav container">
+        <a href="index.html#inicio" class="logoperfume"><b><b>Velvore <span>Perfum</span></b></a>
+
+        <div class="nav-carousel-wrap">
+          <button class="carousel-arrow prev nav-arrow" type="button" aria-label="Ver secciones anteriores">‹</button>
+
+            <div class="nav-carousel">
+              <ul class="nav-links">
+              <li><a href="index.html#nosotros">Nosotros</a></li>
+              <!-- Estos 3 abren el catálogo correspondiente en una pestaña nueva -->
+              <li><a href="catalogo-ofertas.html" target="_self" rel="noopener">Ofertas</a></li>
+              <li><a href="catalogo-perfumes-arabes.html" target="_self" rel="noopener">Perfumes Árabes</a></li>
+              <li><a href="catalogo-perfumes-nichos.html" target="_self" rel="noopener">Perfumes Nichos</a></li>
+              <li><a href="index.html#metodos-de-pagos">Métodos de Pagos</a></li>
+              <li><a href="index.html#envios">Envíos</a></li>
+              <li><a href="index.html#testimonios">Testimonios</a></li>
+              <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+            </div>
+
+          <button class="carousel-arrow next nav-arrow" type="button" aria-label="Ver más secciones">›</button>
+        </div>
+      </nav>
+    </header>
+
+    <!-- ============ ENCABEZADO DEL CATÁLOGO ============ -->
+    <section class="catalog-header">
+      <div class="container">
+        <a href="index.html" class="catalog-back">← Volver al sitio</a>
+        <h1>Ofertas</h1>
+        <p>Fragancias con descuento por tiempo limitado. Precios y stock sujetos a disponibilidad.</p>
+      </div>
+    </section>
+
+    <!-- ============ FILA 1: Ofertas de la semana ============
+         Formato para agregar más productos:
+         1) Copiá un <article class="product-card">...</article> completo.
+         2) Pegalo dentro del mismo .product-carousel-track, antes del cierre </div>.
+         3) Cambiá imagen (src del <img class="ph">), nombre, precio y descripción.
+         El badge (span class="badge") es opcional: podés borrarlo o cambiar el texto. -->
+    <section class="product-row">
+      <div class="container">
+        <div class="product-row-head reveal">
+          <h2>Ofertas de la semana</h2>
+          <span class="row-note">Deslizá para ver más</span>
+        </div>
+
+        <div class="product-carousel-wrap reveal">
+          <button class="product-carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="product-carousel-track">
+
+            <!-- PRODUCTO 1 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-1&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="oferta-1.jpg">
+                <img class="ph" src="" alt="Perfume en oferta 1">
+                <span class="badge">Oferta</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ---- <s style="opacity:0.5; font-size:0.8em;">$ ----</s></span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 2 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-2&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="oferta-2.jpg">
+                <img class="ph" src="" alt="Perfume en oferta 2">
+                <span class="badge">Oferta</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ---- <s style="opacity:0.5; font-size:0.8em;">$ ----</s></span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 3 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-3&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="oferta-3.jpg">
+                <img class="ph" src="" alt="Perfume en oferta 3">
+                <span class="badge">Oferta</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ---- <s style="opacity:0.5; font-size:0.8em;">$ ----</s></span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 4 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-4&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="oferta-4.jpg">
+                <img class="ph" src="" alt="Perfume en oferta 4">
+                <span class="badge">Oferta</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ---- <s style="opacity:0.5; font-size:0.8em;">$ ----</s></span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 5 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=oferta-5&nombre=Nombre+del+perfume&badge=Oferta">
+                <div class="img-frame" data-label="oferta-5.jpg">
+                <img class="ph" src="" alt="Perfume en oferta 5">
+                <span class="badge">Oferta</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ---- <s style="opacity:0.5; font-size:0.8em;">$ ----</s></span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+          </div>
+
+          <button class="product-carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FILA 2: Últimas unidades ============ -->
+    <section class="product-row">
+      <div class="container">
+        <div class="product-row-head reveal">
+          <h2>Últimas unidades</h2>
+          <span class="row-note">Deslizá para ver más</span>
+        </div>
+
+        <div class="product-carousel-wrap reveal">
+          <button class="product-carousel-arrow prev" type="button" aria-label="Ver anterior">‹</button>
+
+          <div class="product-carousel-track">
+
+            <!-- PRODUCTO 1 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=ultimas-1&nombre=Nombre+del+perfume&badge=%C3%9Altimas+unidades">
+                <div class="img-frame" data-label="ultimas-1.jpg">
+                <img class="ph" src="" alt="Perfume última unidad 1">
+                <span class="badge">Últimas unidades</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 2 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=ultimas-2&nombre=Nombre+del+perfume&badge=%C3%9Altimas+unidades">
+                <div class="img-frame" data-label="ultimas-2.jpg">
+                <img class="ph" src="" alt="Perfume última unidad 2">
+                <span class="badge">Últimas unidades</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 3 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=ultimas-3&nombre=Nombre+del+perfume&badge=%C3%9Altimas+unidades">
+                <div class="img-frame" data-label="ultimas-3.jpg">
+                <img class="ph" src="" alt="Perfume última unidad 3">
+                <span class="badge">Últimas unidades</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+            <!-- PRODUCTO 4 -->
+            <article class="product-card">
+              <a class="product-link" href="vista-producto.html?id=ultimas-4&nombre=Nombre+del+perfume&badge=%C3%9Altimas+unidades">
+                <div class="img-frame" data-label="ultimas-4.jpg">
+                <img class="ph" src="" alt="Perfume última unidad 4">
+                <span class="badge">Últimas unidades</span>
+              </div>
+              <h3>Nombre del perfume</h3>
+              </a>
+              <span class="price">$ ----</span>
+              <p class="desc">Descripción breve de la fragancia y sus notas principales.</p>
+            </article>
+
+          </div>
+
+          <button class="product-carousel-arrow next" type="button" aria-label="Ver siguiente">›</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FOOTER + MAPA (igual que index.html) ============ -->
+    <footer>
+      <div class="container">
+        <div class="footer-top">
+          <div class="footer-brand">
+            <a href="index.html#inicio" class="logo">Velvore <span>Perfum</span></a>
+            <p>Fragancias de autor, elaboradas en pequeños lotes en Río Cuarto, Córdoba.</p>
+            <div class="footer-social">
+              <a href="#" target="_blank" rel="noopener">Instagram</a>
+              <a href="#" target="_blank" rel="noopener">WhatsApp</a>
+              <a href="#" target="_blank" rel="noopener">Facebook</a>
+            </div>
+          </div>
+
+          <div class="map-wrap">
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-64.3600%2C-33.1400%2C-64.3200%2C-33.1150&layer=mapnik&marker=-33.1275%2C-64.3400"
+              title="Ubicación de Velvore Perfum en el mapa"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+            <div class="map-label">
+              <strong>Velvore Perfum</strong> — Río Cuarto, Córdoba, Argentina<br>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>© 2026 Velvore Perfum. Todos los derechos reservados.</span>
+        <span>Sitio hecho con dedicación, como cada frasco.</span>
+      </div>
+    </footer>
+
+    <script src="js/script.js" defer></script>
+    <script src="js/scriptProductos.js" defer></script>
+
+    <!-- Botón flotante de WhatsApp -->
+    <a
+      href="https://wa.me/5493585103101?text=Hola!%20Quiero%20m%C3%A1s%20informaci%C3%B3n%20sobre%20su%20cat%C3%A1logo%20por%20favor..."
+      class="whatsapp-float"
+      target="_blank"
+      rel="noopener"
+      aria-label="Chatear por WhatsApp">
+      <img src="images/icono-whatsapp.png" alt="Icono de WhatsApp">
+    </a>
+    </body>
+</html>
