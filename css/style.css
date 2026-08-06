@@ -2,10 +2,10 @@
   :root{
     --bg:            #000000;
     --bg-alt:        #110211;
-    --bg-card:       #14ac1e;
+    --bg-card:       #241528;
     --gold:          #b8860b;
     --gold-soft:     #E7CD93;
-    --cream:         #efff11;
+    --cream:         #F4EAE0;
     --ivory:         #FBF7F1;
     --rose:          #965566;
     --line:          rgba(248, 174, 38, 0.25);
@@ -374,6 +374,21 @@ section{
 .testimonial p{ font-family:var(--display); font-style:italic; font-size:1.15rem; color:var(--cream); margin-bottom:1.2rem; }
 .testimonial .who{ font-size:0.78rem; letter-spacing:0.12em; text-transform:uppercase; color:var(--gold); }
 
+/* Cuando la tarjeta de testimonio es una imagen (en vez de texto + firma),
+   sacamos el padding de la tarjeta y hacemos que la imagen se vea completa,
+   sin recortarse, respetando su propia proporción. */
+.testimonial:has(.testimonial-img){
+  padding:0;
+  overflow:hidden;
+}
+.testimonial-img{
+  display:block;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  background:var(--bg-card);
+}
+
 /* ============ CARRUSEL (Colección y Testimonios) ============
    Se activa agregando la clase "carousel-track" a .collection-grid
    o .testimonial-grid, envuelto en un .carousel-wrap con flechas. */
@@ -442,6 +457,71 @@ section{
   .carousel-arrow.next{ right:-22px; }
 }
 
+/* ============ MÉTODOS DE PAGO / ENVÍOS: lista de íconos ============ */
+.icon-list{
+  display:flex;
+  flex-wrap:wrap;
+  gap:1.4rem;
+  margin-top:2rem;
+}
+.icon-list-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:0.6rem;
+  width:84px;
+  text-align:center;
+}
+.icon-list-item .icon-chip{
+  width:56px;
+  height:56px;
+  border-radius:12px;
+  background:rgba(244,234,224,0.92);
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  transition:transform .25s ease, border-color .25s ease;
+}
+.icon-list-item:hover .icon-chip{
+  transform:translateY(-3px);
+  border-color:var(--gold);
+}
+.icon-list-item .icon-chip img{
+  width:78%;
+  height:78%;
+  object-fit:contain;
+}
+/* Placeholder de texto corto (ej: "MP", "BNA") mientras no cargues el logo real */
+.icon-list-item .icon-chip .icon-placeholder{
+  font-family:var(--display);
+  font-weight:600;
+  font-size:0.78rem;
+  letter-spacing:0.01em;
+  color:#170D14;
+  opacity:0.6;
+  padding:0 0.2rem;
+}
+.icon-list-item span.label{
+  font-size:0.72rem;
+  letter-spacing:0.04em;
+  color:rgba(244,234,224,0.7);
+}
+
+/* ============ FOOTER: íconos sociales chicos junto al texto ============ */
+.footer-social a{
+  display:inline-flex;
+  align-items:center;
+  gap:0.4rem;
+}
+.footer-social a svg{
+  width:1em;
+  height:1em;
+  fill:currentColor;
+  flex-shrink:0;
+}
+
 /* ---- Contacto ---- */
 .contact-grid{
   display:grid;
@@ -457,7 +537,7 @@ input, textarea{
   width:100%;
   background:var(--bg-card);
   border:1px solid var(--line);
-  color:#000;
+  color:var(--cream);
   font-family:var(--body);
   font-size:0.97rem;
   padding:0.8em 1em;
